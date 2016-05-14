@@ -1,0 +1,51 @@
+.root
+{
+	-fx-background-color: #2b2f32;
+	-fx-background-radius:17px;
+}
+.button
+{
+	-fx-background-color:#424242;
+}
+.button:hover
+{
+	-fx-background-color:#696969;
+	-fx-background-radius:10px;
+}
+#Close
+{
+	-fx-background-radius:10px;
+	-fx-font-size:8px;
+	-fx-background-color:#f4594f;
+	-fx-effect: innershadow(gaussian, rgba(0,0,0,0.3), 50, 50.0 , 1, 1);
+}
+#Close:hover
+{
+	-fx-background-color:#f44336;
+	-fx-effect: innershadow(gaussian, rgba(255,83,74,0.5), 50, 50.0 , 1, 1);
+	-fx-background-radius:30px ;
+}
+#Max
+{
+	-fx-background-radius:10px;
+	-fx-font-size:8;
+	-fx-background-color:f8bf5b;
+	-fx-effect: innershadow(gaussian, rgba(0,0,0,0.3), 50, 50.0 , 1, 1);
+}
+#Max:hover
+{
+	-fx-background-color:f8bf5b;
+	-fx-effect: innershadow(gaussian, rgba(222,155,50,0.5), 50, 50.0 , 1, 1);
+}
+#Min
+{
+	-fx-background-radius:10px;
+	-fx-font-size:8;
+	-fx-background-color:a1d877;
+	-fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 50, 50.0 , 1, 1);
+}
+#Min:hover
+{
+-fx-background-color:a1d877;
+-fx-effect: innershadow(gaussian, rgba(144,207,105,0.5), 50, 50.0 , 1, 1);
+}
