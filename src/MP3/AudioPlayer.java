@@ -2,6 +2,8 @@ package MP3;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioSpectrumListener;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -34,18 +40,17 @@ public class AudioPlayer extends Application
 	@Override
 	public void start(Stage primaryStage)
 	{
-
 		metaDataView = new MetadataView(songModel);
 		playerControlsView = new PlayerControlsView(songModel);
 		final BorderPane root = new BorderPane();
 		BorderPane Header=new BorderPane();
 		//Create info bar
 		HBox InfoBar=new HBox();
-	    InfoBar.setPrefWidth(80);
 		Button Close=new Button();
 		Button Min=new Button();
 		Button Max=new Button();
 		InfoBar.getChildren().addAll(Min,Max,Close);
+		InfoBar.setPrefWidth(80);
 		Min.setPrefHeight(20);
 		Min.setPrefWidth(20);
 		Min.setId("Min");
@@ -66,7 +71,9 @@ public class AudioPlayer extends Application
 				+ "-fx-background-radius:17px 17px 0px 0px;");
 		/*******************/
 		root.setTop(Header);
-		root.setCenter(metaDataView.getViewNode());
+		HBox Info=new HBox();
+		Info.getChildren().add(metaDataView.getViewNode());
+		root.setCenter(Info);
 		root.setBottom(playerControlsView.getViewNode());
 		final Scene scene = new Scene(root, 550, 400);
 		initSceneDragAndDrop(scene);
@@ -75,7 +82,7 @@ public class AudioPlayer extends Application
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Audio Player");
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+		primaryStage.initStyle(StageStyle.UNDECORATED);
 		primaryStage.show();
 		primaryStage.getIcons().add(Logo);
 		/*******************/
@@ -128,7 +135,7 @@ public class AudioPlayer extends Application
 				{
 						if(primaryStage.getHeight()==400)
 						{
-							primaryStage.setWidth(700);
+							primaryStage.setWidth(720);
 							primaryStage.setHeight(550);
 						}
 						else
@@ -166,7 +173,7 @@ public class AudioPlayer extends Application
 					Dragboard db = event.getDragboard();
 					if (db.hasFiles() || db.hasUrl())
 					{
-						event.acceptTransferModes(TransferMode.ANY);
+						event.acceptTransferModes(TransferMode.COPY);
 					}
 					event.consume();
 				}
@@ -196,4 +203,6 @@ public class AudioPlayer extends Application
 				}
 			});
 		}
+
 }
+

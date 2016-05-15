@@ -13,9 +13,6 @@ import javafx.scene.media.MediaPlayer;
 
 public final class Song
 	{
-
-
-
 		private final StringProperty album =
 				new SimpleStringProperty(this, "album");
 		private final StringProperty artist =
@@ -42,7 +39,7 @@ public final class Song
 		}
 		public boolean IsURL()
 		{
-			return (mediaPlayer.get() == null);
+			return (mediaPlayer.get() == null) ;
 		}
 		/**********************/
 		public String getAlbum()
@@ -103,10 +100,7 @@ public final class Song
 		}
 		public void setAlbumCover(Image value)
 		{
-
-
 				albumCover.set(value);
-
 		}
 		public ObjectProperty<Image> AlbumCoverProperty()
 		{
@@ -123,13 +117,11 @@ public final class Song
 		}
 		private void resetProperties()
 		{
-			setArtist("");
-			setAlbum("");
-			setTitle("");
-			setYear("");
-			Image im=new Image("Music.png");
-			
-			setAlbumCover(im);
+			setArtist("Unkown");
+			setAlbum("Unkown");
+			setTitle("Unkown");
+			setYear("Unkown");
+			setAlbumCover(new Image("Music.png"));
 		}
 		private void initializeMedia(String url)
 		{
@@ -147,11 +139,8 @@ public final class Song
 						handleMetadata(ch.getKey(), ch.getValueAdded());
 					}
 				}
-				
 			});
 			mediaPlayer.setValue(new MediaPlayer(media));
-			getMediaPlayer().play();
-
 			mediaPlayer.get().setOnError(new Runnable()
 			{
 				@Override
